@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:music_player/core/constants/app_constants.dart';
+import 'package:music_player/widgets/common/custom_audio_list_tile.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
@@ -7,39 +9,14 @@ class FavoriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Music Player'),
+        title: const Text(kAppName),
         centerTitle: false,
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
-      body: Center(
-        child: ListView.builder(
-            itemCount: 40,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: const DecorationImage(
-                      image: NetworkImage(
-                        'https://picsum.photos/200/200',
-                      ),
-                    ),
-                  ),
-                ),
-                title: const Text(
-                  'Song that displays',
-                  style: TextStyle(color: Colors.white),
-                ),
-                subtitle: const Text('Artist'),
-                trailing: Text('3:00',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall
-                        ?.copyWith(color: Colors.grey, fontSize: 15)),
-              );
-            }),
+      body: const Center(
+        child: CustomAudioListTile(
+          isFavoriteScreen: true,
+        ),
       ),
     );
   }

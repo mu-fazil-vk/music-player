@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:music_player/core/constants/app_constants.dart';
 
 class AudioBannerWidget extends StatelessWidget {
   const AudioBannerWidget({
@@ -13,15 +14,23 @@ class AudioBannerWidget extends StatelessWidget {
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
           return Center(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.width - 50,
-              width: MediaQuery.of(context).size.width - 50,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  'https://picsum.photos/200/200',
-                  fit: BoxFit.fill,
+            child: Container(
+              height: MediaQuery.of(context).size.width - 100,
+              width: MediaQuery.of(context).size.width - 100,
+              margin: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: const DecorationImage(
+                  image: AssetImage(kTestImage),
+                  fit: BoxFit.cover,
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.2),
+                    blurRadius: 20,
+                    offset: const Offset(0, 10),
+                  ),
+                ],
               ),
             ),
           );

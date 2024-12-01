@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:music_player/core/constants/app_constants.dart';
+import 'package:music_player/widgets/common/custom_audio_list_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Music Player'),
+        title: const Text(kAppName),
         centerTitle: false,
         actions: [
           IconButton(
@@ -30,49 +32,8 @@ class HomeScreen extends StatelessWidget {
                   itemCount: 4,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                      width: 300,
-                      height: 300,
-                      child: ListView.builder(
-                          itemCount: 4,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              leading: Container(
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: const DecorationImage(
-                                    image: NetworkImage(
-                                      'https://picsum.photos/200/200',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              title: const Text(
-                                'Song that displ',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: const Text('Artist'),
-                              trailing: index == 0
-                                  ? const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          size: 17,
-                                        ),
-                                        Text('3:00',
-                                            style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 15)),
-                                      ],
-                                    )
-                                  : null,
-                            );
-                          }),
-                    );
+                    return const SizedBox(
+                        width: 300, height: 300, child: CustomAudioListTile());
                   },
                 ),
               ),
@@ -108,8 +69,9 @@ class HomeScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: const DecorationImage(
-                                  image: NetworkImage(
-                                    'https://picsum.photos/200/200',
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                    kTestImage,
                                   ),
                                 ),
                               ),
@@ -167,8 +129,9 @@ class HomeScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 image: const DecorationImage(
-                                  image: NetworkImage(
-                                    'https://picsum.photos/200/200',
+                                  fit: BoxFit.cover,
+                                  image: AssetImage(
+                                    kTestImage,
                                   ),
                                 ),
                               ),
